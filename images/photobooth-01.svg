@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 920">
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#12385d"/><stop offset=".58" stop-color="#e89a55"/><stop offset="1" stop-color="#f8d37a"/></linearGradient>
+    <radialGradient id="sun"><stop stop-color="#fff1b2"/><stop offset="1" stop-color="#ffba48"/></radialGradient>
+  </defs>
+  <rect width="800" height="920" fill="url(#sky)"/>
+  <circle cx="400" cy="438" r="100" fill="url(#sun)" opacity=".95"/>
+  <path d="M0 548 150 485l102 41 135-95 134 95 112-60 167 69v385H0Z" fill="#193a48" opacity=".82"/>
+  <path d="M0 647q145-100 286-18t260 0q125-58 254 10v281H0Z" fill="#26483b"/>
+  <path d="M0 780q190-92 382-15t418-4v159H0Z" fill="#102d31"/>
+  <g fill="#ffd45d" opacity=".75"><circle cx="106" cy="667" r="7"/><circle cx="180" cy="734" r="5"/><circle cx="656" cy="641" r="6"/><circle cx="725" cy="741" r="8"/><circle cx="535" cy="812" r="5"/></g>
+  <g fill="#fff3d0" text-anchor="middle" font-family="Georgia,serif">
+    <text x="400" y="824" font-size="34" letter-spacing="5">YOUR PHOTO</text>
+    <text x="400" y="872" font-size="24" font-style="italic">replace this image in the images folder</text>
+  </g>
+</svg>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071b32">
+<title>Where the Sunflowers Bloom 🌻</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap');
+:root{--night:#06182c;--blue:#123d66;--gold:#ffd777;--cream:#fff5d9;--muted:#c4d3e3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--night);color:var(--cream);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+#sky{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:radial-gradient(ellipse at 50% 25%,#24527b 0%,#0b2b4b 38%,#06182c 80%)}
+.swirl{position:absolute;width:80vw;height:80vw;max-width:1100px;max-height:1100px;left:50%;top:42%;border-radius:50%;transform:translate(-50%,-50%);border:1px solid #f9d77512;box-shadow:inset 0 0 100px #f5bd4c0b;animation:slowspin 100s linear infinite}
+.swirl:before,.swirl:after{content:"";position:absolute;inset:9%;border-radius:50%;border:2px dashed #72a8d52c;transform:rotate(22deg) scaleY(.65)}.swirl:after{inset:20%;transform:rotate(-31deg) scaleY(.8);border-color:#f9d77522}
+@keyframes slowspin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.particle{position:absolute;width:3px;height:3px;border-radius:50%;background:#ffe7a0;box-shadow:0 0 12px #ffca61;animation:drift var(--dur) linear infinite;opacity:0}
+@keyframes drift{0%{transform:translate3d(0,20px,0);opacity:0}15%{opacity:.8}80%{opacity:.55}100%{transform:translate3d(var(--dx),-110vh,0);opacity:0}}
+main,footer{position:relative;z-index:1}.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:35px 20px;position:relative;isolation:isolate;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#04132220 0%,#06182c12 55%,#06182c 100%)}
+.kicker{font-size:.68rem;text-transform:uppercase;letter-spacing:.28em;color:#ffe6a3}.hero h1{font:400 clamp(3.2rem,10vw,7.8rem)/.88 'Cormorant Garamond',serif;letter-spacing:-.04em;margin:25px 0 20px;text-shadow:0 8px 50px #0008}.hero h1 em{color:var(--gold);font-weight:400}.intro{max-width:500px;margin:0 auto 30px;color:#d7e1eb;line-height:1.9;font-weight:300;font-size:.98rem}
+.cta{padding:14px 23px;border:1px solid #ffdf8c99;border-radius:999px;background:#e5b74a12;color:#fff1c4;letter-spacing:.04em;font:500 .9rem 'DM Sans';cursor:pointer;transition:.3s;backdrop-filter:blur(8px)}.cta:hover{background:#e5b74a2c;transform:translateY(-3px);box-shadow:0 8px 35px #f9c65b24}.hint{font-size:.72rem;color:#a9bfd3;margin-top:15px}
+.flower-stage{height:clamp(220px,36vh,360px);width:min(90vw,420px);margin:0 auto 8px;position:relative;display:grid;place-items:center;filter:drop-shadow(0 18px 40px #0007)}
+.flower{position:relative;width:180px;height:180px;transform:scale(.7);opacity:.3;transition:transform 2s cubic-bezier(.2,.7,.2,1),opacity 1.4s}.flower.bloomed{transform:scale(1);opacity:1}
+.petal{position:absolute;left:50%;top:50%;width:36px;height:83px;margin-left:-18px;margin-top:-80px;transform-origin:50% 80px;border-radius:52% 52% 45% 45%;background:linear-gradient(90deg,#c47a22 0%,#f3b938 25%,#ffe99b 55%,#d98a1f 100%);box-shadow:inset 0 0 8px #fff4a44a;animation:sway 4.5s ease-in-out infinite alternate;animation-delay:var(--delay)}
+@keyframes sway{0%{rotate:-2deg}100%{rotate:2deg}}
+.center{position:absolute;left:50%;top:50%;width:69px;height:69px;margin:-34px;border-radius:50%;z-index:2;background:radial-gradient(circle at 40% 35%,#9d6330 0%,#654020 32%,#38241d 70%,#1b1718 100%);border:4px solid #d49a3e;box-shadow:inset 0 0 0 5px #4d2e1b,0 0 22px #ffcf5a36}
+.center:after{content:"";position:absolute;inset:8px;border-radius:50%;background:radial-gradient(circle,#211c19 1px,transparent 2px);background-size:7px 7px;opacity:.8}
+.stem{position:absolute;left:50%;top:64%;height:120px;width:7px;background:linear-gradient(90deg,#315638,#7ca65c,#243e35);border-radius:9px;z-index:-1}.leaf{position:absolute;left:52%;top:80%;width:58px;height:28px;background:linear-gradient(135deg,#8aa45b,#2d633d);border-radius:100% 0 100% 0;transform:rotate(-24deg);transform-origin:left center}.leaf.two{left:24%;top:89%;transform:rotate(190deg) scale(.8)}
+.section{max-width:1000px;margin:0 auto;padding:90px 22px}.head{text-align:center;max-width:660px;margin:0 auto 36px}.eyebrow{font-size:.68rem;text-transform:uppercase;letter-spacing:.25em;color:var(--gold)}h2{font:400 clamp(2.6rem,7vw,4.6rem)/1 'Cormorant Garamond',serif;margin:16px 0}h2 em{color:var(--gold);font-weight:400}.lead{color:var(--muted);line-height:1.9;font-weight:300}
+.story-card{max-width:760px;margin:18px auto;padding:25px 28px;border:1px solid #f8d8792a;background:linear-gradient(120deg,#ffffff0c,#ffffff03);border-radius:4px 20px 20px 4px;position:relative;backdrop-filter:blur(8px)}.story-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(#ffe6a2,#d98a1f)}.story-card small{color:#ffdc83;letter-spacing:.16em;text-transform:uppercase;font-size:.66rem}.story-card h3{font:500 1.8rem 'Cormorant Garamond',serif;margin:10px 0}.story-card p{margin:0;color:#c8d7e6;line-height:1.8;font-weight:300}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:center}.polaroid{padding:10px 10px 17px;background:#fff8e8;color:#3b2a20;box-shadow:0 20px 50px #0005;transform:rotate(var(--tilt));transition:.4s;animation:float 6s ease-in-out infinite;animation-delay:var(--delay)}.polaroid:hover{transform:rotate(0) translateY(-8px) scale(1.03)}@keyframes float{0%,100%{translate:0 0}50%{translate:0 -9px}}
+.photobooth-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,4vw,48px);align-items:center;max-width:900px;margin:0 auto}
+.photobooth-frame{width:100%;padding:0;border:0;background:transparent;color:#3b2a20;cursor:zoom-in;text-align:inherit}
+.photobooth-paper{position:relative;isolation:isolate;display:block;width:100%;padding:11px 11px 17px;background:#fff8e8;box-shadow:0 20px 50px #0007;transform:rotate(var(--tilt));transition:transform .35s ease,box-shadow .35s ease}
+.photobooth-paper::after{content:"";position:absolute;left:9%;right:9%;bottom:-9px;height:16px;border-radius:50%;background:#000;filter:blur(10px);opacity:.48;transform:scale(.92);z-index:-1;pointer-events:none;animation:polaroid-float-shadow 6.5s ease-in-out var(--delay) infinite alternate}
+@keyframes polaroid-float-shadow{to{opacity:.28;transform:translateY(4px) scale(1.04)}}
+.photobooth-frame:hover,.photobooth-frame:focus-visible{position:relative;z-index:2}
+.photobooth-frame:hover .photobooth-paper,.photobooth-frame:focus-visible .photobooth-paper{transform:rotate(0) translateY(-8px) scale(1.035);box-shadow:0 28px 58px #000a}
+.photobooth-frame:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
+.photobooth-image{display:block;aspect-ratio:4/4.6;overflow:hidden;background:linear-gradient(145deg,#102d4a,#2f6691 45%,#d6a642)}
+.photobooth-image img{display:block;width:100%;height:100%;object-fit:cover}
+.photobooth-paper .caption{min-height:54px;padding:13px 4px 0}
+.lightbox{width:min(92vw,900px);max-width:none;max-height:92vh;padding:16px;border:1px solid #f8d87966;background:rgba(5,19,33,.96);color:var(--cream);box-shadow:0 24px 90px #000b}
+.lightbox::backdrop{background:rgba(1,8,15,.82);backdrop-filter:blur(6px)}
+.lightbox-close{display:block;margin:0 0 12px auto;padding:7px 13px;border:1px solid #f8d87966;border-radius:999px;background:#ffffff0d;color:var(--cream);font:500 .9rem 'DM Sans',sans-serif;cursor:pointer}
+.lightbox-close:hover,.lightbox-close:focus-visible{background:#ffffff20}
+.lightbox-image{display:block;width:100%;max-height:76vh;object-fit:contain}
+.lightbox-caption{text-align:center;margin:12px 0 2px;color:#ffe29a;font:italic 1.35rem 'Cormorant Garamond',serif}
+.photo{aspect-ratio:4/4.6;background:linear-gradient(145deg,#102d4a,#2f6691 45%,#d6a642);display:grid;place-items:center;text-align:center;padding:15px;position:relative;overflow:hidden}.photo:before{content:"";position:absolute;inset:-50%;background:repeating-radial-gradient(ellipse at center,transparent 0 26px,#f5d87b18 28px 31px,transparent 34px 58px);animation:slowspin 50s linear infinite}.photo img{display:block;width:100%;height:100%;object-fit:cover}.photo-full{padding:0}.photo-heart{padding:0}.photo-heart img{position:absolute;z-index:1;left:50%;top:50%;width:auto;height:auto;max-width:90%;max-height:76%;object-fit:contain;transform:translate(-50%,-50%);filter:drop-shadow(0 8px 12px #0008)}.photo span{position:relative;color:#fff2c4;font:italic 1.2rem 'Cormorant Garamond',serif;text-shadow:0 2px 15px #0009}.caption{text-align:center;font:italic 1.05rem 'Cormorant Garamond',serif;padding-top:13px}
+.golden-note{text-align:center;color:#b8cbdc;font-size:.78rem;margin-top:23px}
+.letter-box{max-width:650px;margin:0 auto;text-align:center;padding:34px 24px;border:1px solid #f8d87933;background:linear-gradient(145deg,#ffffff0b,#ffffff03);backdrop-filter:blur(8px)}.seal{height:64px;width:64px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#ffe8a1,#bd7b21);color:#243348;font-size:1.7rem;box-shadow:0 0 35px #ffce6255}.letter-box h3{font:500 2rem 'Cormorant Garamond',serif;margin:8px 0}.letter-box p{color:#c8d7e6;line-height:1.8;font-weight:300}.letter-content{display:none;text-align:left;max-width:620px;margin:24px auto 0;padding:26px;border:1px solid #f8d87933;background:#071b2bd9;line-height:1.95;color:#f7ebd0;white-space:pre-line}.letter-content.open{display:block;animation:reveal 1s ease both}@keyframes reveal{from{opacity:0;transform:translateY(18px);filter:blur(4px)}to{opacity:1;transform:none;filter:blur(0)}}
+footer{text-align:center;padding:55px 18px 65px;color:#9db2c6;font-size:.75rem;letter-spacing:.08em}footer b{color:#f7d579;font-weight:400}
+#content{display:none;animation:reveal 1s ease both}#content.show{display:block}
+@media(max-width:650px){.section{padding:68px 17px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.polaroid{padding:8px 8px 13px}.gallery .polaroid:last-child{grid-column:1/-1;width:64%;justify-self:center}.photobooth-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}.photobooth-paper{padding:8px 8px 13px}.photobooth-paper .caption{font-size:.98rem;min-height:50px}.flower{transform:scale(.62)}.flower.bloomed{transform:scale(.85)}.hero{min-height:96svh}.story-card{padding:22px 20px}.letter-content{padding:20px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+
+.hero-art{position:relative;z-index:1;width:100%;line-height:0;overflow:hidden;background:#06182c}
+.hero-art-img{display:block;width:100%;height:auto;min-height:70vh;object-fit:cover;object-position:center}
+.hero-hotspot{position:absolute;left:41.7%;top:52.4%;width:17.8%;height:6.2%;border:0;background:transparent;cursor:pointer;border-radius:999px}
+.hero-hotspot:focus-visible{outline:3px solid #fff1b2;outline-offset:3px}
+@media(max-width:700px){.hero-art-img{width:100%;height:88svh;min-height:600px;object-fit:cover;object-position:center}.hero-hotspot{left:31%;top:53%;width:38%;height:6.5%}}
+
+/* Keep the garden scenery behind the hero and every section as the page scrolls. */
+body{background:#071b2c!important}
+#sky{background:linear-gradient(180deg,rgba(3,15,29,.24),rgba(3,15,29,.44)),url('sunflower-garden-background.png') center center/cover fixed no-repeat!important;z-index:0}
+.swirl{opacity:.18}
+.section{position:relative;z-index:1}
+.story-card,.letter-box,.letter-content{background:linear-gradient(135deg,rgba(4,18,30,.80),rgba(14,35,48,.58))!important;backdrop-filter:blur(7px)}
+.gallery .polaroid{z-index:2}
+.sunflower-float{position:fixed;z-index:3;pointer-events:none;user-select:none;filter:drop-shadow(0 4px 8px rgba(255,190,40,.32));opacity:.86;transform-origin:50% 75%;animation:flower-sway var(--sway,4s) ease-in-out infinite alternate, flower-drift var(--drift,18s) ease-in-out infinite}
+@keyframes flower-sway{0%{rotate:-12deg;translate:0 0}100%{rotate:13deg;translate:9px -5px}}
+@keyframes flower-drift{0%,100%{margin-top:0}50%{margin-top:-22px}}
+.falling-petal{position:fixed;top:-50px;z-index:4;pointer-events:none;color:#ffc84d;text-shadow:0 0 12px #ffb52e;animation:petal-fall var(--fall,12s) linear infinite;opacity:.85}
+@keyframes petal-fall{0%{transform:translate3d(0,-5vh,0) rotate(0deg);opacity:0}10%{opacity:.85}85%{opacity:.7}100%{transform:translate3d(var(--sway-x,60px),110vh,0) rotate(480deg);opacity:0}}
+.hero-art{min-height:100svh;background:transparent}
+.hero-art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,16,29,.12),rgba(4,16,29,.22) 55%,rgba(4,16,29,.58));pointer-events:none}
+.hero-art-img{position:relative;z-index:1;opacity:1;pointer-events:none}
+.hero-hotspot{z-index:5}
+@media(max-width:700px){body{background-attachment:scroll!important}.sunflower-float{opacity:.65}.hero-art-img{opacity:1!important}}
+
+/* Home page */
+body{background:#071b2c!important}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,#123c5b 0%,#071b2c 60%,#04101c 100%)}
+.site-header{position:absolute;top:0;left:0;right:0;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px clamp(18px,5.5vw,84px);background:linear-gradient(180deg,rgba(4,16,29,.76),rgba(4,16,29,.18));border-bottom:1px solid rgba(255,226,157,.13);backdrop-filter:blur(8px)}
+.brand{display:flex;align-items:center;gap:12px;color:#fff7df;text-decoration:none;font:italic 500 1.45rem 'Cormorant Garamond',serif;white-space:nowrap}
+.brand-mark{font-style:normal;font-size:1.65rem;filter:drop-shadow(0 0 10px #ffd77766)}
+.site-nav{display:flex;align-items:center;gap:clamp(13px,3vw,42px)}
+.site-nav a{position:relative;padding:8px 0;color:#f6f1e8;text-decoration:none;font:500 1.02rem 'Cormorant Garamond',serif;transition:color .25s ease}
+.site-nav a:after{content:"";position:absolute;left:0;right:100%;bottom:2px;height:2px;background:var(--gold);transition:right .25s ease}
+.site-nav a:hover,.site-nav a:focus-visible,.site-nav a[aria-current="page"]{color:var(--gold)}
+.site-nav a:hover:after,.site-nav a:focus-visible:after,.site-nav a[aria-current="page"]:after{right:0}
+.site-nav .nav-heart{color:var(--gold);font:1.3rem 'DM Sans',sans-serif}
+.hero-art{min-height:100svh;display:grid;place-items:center;position:relative;isolation:isolate;overflow:hidden;background:#071b2c url("sunflower-garden-background.png") center 48%/cover no-repeat}
+.hero-art:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(4,14,26,.25),rgba(4,14,26,.12) 46%,rgba(4,14,26,.42)),radial-gradient(ellipse at 50% 44%,rgba(4,21,37,.82) 0%,rgba(4,21,37,.63) 27%,rgba(4,21,37,.12) 63%,transparent 80%)}
+.hero-art:after{z-index:0;background:linear-gradient(180deg,rgba(4,16,29,.08),transparent 58%,rgba(4,16,29,.28))}
+.hero-copy{position:relative;z-index:2;width:min(760px,calc(100% - 36px));margin:46px 0 30px;text-align:center;padding:clamp(24px,4vw,46px) clamp(16px,4vw,36px);border:1px solid rgba(255,228,164,.15);border-radius:24px;background:rgba(4,20,35,.44);box-shadow:0 20px 80px rgba(0,0,0,.18);backdrop-filter:blur(5px);animation:hero-rise .9s .1s both}
+.hero-copy .kicker{color:#ffe6a3}
+.hero-copy h1{font:400 clamp(3.3rem,9vw,7.2rem)/.91 'Cormorant Garamond',serif;letter-spacing:-.04em;margin:18px 0 17px;text-shadow:0 5px 30px #0009}
+.hero-copy h1 em{color:var(--gold);font-weight:400}
+.hero-copy .intro{max-width:520px;margin:0 auto 25px;color:#fff4de;font-size:clamp(.93rem,2vw,1.05rem);text-shadow:0 2px 12px #000}
+.cta-link{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:52px;padding:14px 30px;border:1px solid #ffe28d;border-radius:999px;background:linear-gradient(135deg,#ffdf82,#f2bd48);color:#18283a;text-decoration:none;font-weight:600;box-shadow:0 0 34px #ffc84d55;transition:transform .25s ease,box-shadow .25s ease}
+.cta-link:hover,.cta-link:focus-visible{transform:translateY(-3px);box-shadow:0 8px 38px #ffc84d77}
+.scroll-cue{position:absolute;bottom:14px;left:50%;z-index:2;display:grid;justify-items:center;gap:5px;padding:7px 20px;border:1px solid rgba(255,226,157,.14);border-radius:20px;background:rgba(4,18,30,.86);box-shadow:0 4px 18px rgba(0,0,0,.3);backdrop-filter:blur(8px);transform:translateX(-50%);color:#fff0c9;text-decoration:none;font:italic 1rem 'Cormorant Garamond',serif}
+.scroll-cue:after{content:"⌄";font:1.25rem 'DM Sans',sans-serif;animation:cue-bob 1.8s ease-in-out infinite}
+@keyframes cue-bob{50%{transform:translateY(5px)}}
+@keyframes hero-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.garden-flowers{position:absolute;inset:auto 0 0;height:clamp(170px,30vh,300px);z-index:1;pointer-events:none;overflow:hidden}
+.garden-flower{position:absolute;bottom:-5%;left:var(--left);width:var(--size);height:var(--size);transform:scale(var(--scale));transform-origin:50% 100%;animation:plant-sway var(--sway) ease-in-out var(--delay) infinite;filter:drop-shadow(0 5px 13px rgba(0,0,0,.45))}
+.garden-stem{position:absolute;left:50%;top:41%;width:8px;height:65%;border-radius:99px;background:linear-gradient(90deg,#244733,#82a34f 48%,#234b35);transform:translateX(-50%);transform-origin:50% 0}
+.garden-leaf{position:absolute;top:67%;left:50%;width:42%;height:17%;border-radius:100% 0 100% 0;background:linear-gradient(135deg,#8aa84e,#32613b);transform:rotate(-31deg);transform-origin:0 100%}
+.garden-leaf.leaf-right{left:48%;top:78%;transform:scaleX(-1) rotate(-29deg)}
+.garden-head{position:absolute;top:0;left:50%;width:100%;aspect-ratio:1;transform:translateX(-50%);transform-origin:50% 76%;animation:head-tilt calc(var(--sway) * .83) ease-in-out calc(var(--delay) - .4s) infinite alternate}
+.garden-petal{position:absolute;left:50%;top:50%;width:17%;height:46%;border-radius:55% 55% 45% 45%;transform:translate(-50%,-88%) rotate(var(--angle));transform-origin:50% 88%;background:linear-gradient(90deg,#c87920,#ffd34f 48%,#f5a927);box-shadow:inset 0 0 3px #fff1a4;animation:petal-flex calc(var(--sway) * 1.2) ease-in-out var(--delay) infinite alternate}
+.garden-disk{position:absolute;left:50%;top:50%;width:38%;aspect-ratio:1;transform:translate(-50%,-50%);border:4px solid #c98930;border-radius:50%;background:radial-gradient(circle at 40% 34%,#8a542b,#38251e 70%);box-shadow:inset 0 0 0 4px #5b371e,0 0 18px #ffcc4b44}
+@keyframes plant-sway{0%,28%,100%{rotate:-1.8deg;translate:-2px 0}40%,48%{rotate:3deg;translate:3px -2px}56%{rotate:1deg;translate:1px 0}70%{rotate:-2deg;translate:-2px 1px}}
+@keyframes head-tilt{0%,32%,100%{rotate:-2deg}44%,52%{rotate:4deg}62%{rotate:1deg}74%{rotate:-3deg}}
+@keyframes petal-flex{from{translate:-1px 0}to{translate:1px -1px}}
+.explore-section{padding-top:56px;padding-bottom:44px}
+.feature-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.feature-card{min-height:180px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:9px;padding:23px;border:1px solid rgba(255,215,119,.31);border-radius:16px;background:linear-gradient(145deg,rgba(15,44,61,.78),rgba(5,22,37,.82));color:var(--cream);text-decoration:none;backdrop-filter:blur(9px);transition:transform .28s ease,border-color .28s ease,background .28s ease}
+.feature-card:hover,.feature-card:focus-visible{transform:translateY(-6px);border-color:var(--gold);background:linear-gradient(145deg,rgba(36,69,77,.88),rgba(8,28,42,.9))}
+.feature-icon{font-size:1.7rem}.feature-card strong{font:500 1.55rem 'Cormorant Garamond',serif;color:#ffe29a}.feature-card span:last-child{font-size:.84rem;color:#c4d3e3}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.is-visible{opacity:1;transform:none}
+.falling-petal{z-index:4;width:9px;height:16px;border-radius:90% 12% 90% 12%;background:linear-gradient(135deg,#ffe27b,#e59a25);box-shadow:0 0 12px rgba(255,195,62,.6);color:transparent;font-size:0}
+#content{display:block;animation:none}
+#content.show{display:block}
+.sunflower-float{display:none}
+@media(max-width:760px){.site-header{align-items:flex-start;flex-direction:column;gap:9px;padding:14px 18px}.brand{font-size:1.25rem}.site-nav{width:100%;justify-content:space-between;gap:8px}.site-nav a{font-size:.93rem}.hero-art{min-height:94svh;background-position:50% 50%}.hero-art:before{background:radial-gradient(ellipse at 50% 40%,rgba(35,85,107,.42),transparent 66%),linear-gradient(180deg,rgba(4,14,26,.45),rgba(4,14,26,1) 18%,rgba(4,14,26,1) 76%,rgba(4,14,26,.55))}.hero-copy{margin-top:98px}.garden-flowers{height:190px}.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.feature-card{min-height:148px;padding:17px}.explore-section{padding-top:50px}}
+@media(max-width:390px){.site-nav{gap:5px}.site-nav a{font-size:.83rem}.brand{font-size:1.15rem}.feature-card{padding:14px}.garden-flowers{height:155px}}
+@media(prefers-reduced-motion:reduce){.garden-flower,.garden-head,.garden-petal,.scroll-cue:after{animation:none!important}.reveal{opacity:1;transform:none;transition:none}.hero-copy{animation:none}}
+</style>
+</head>
+<body>
+<div id="sky"><div class="swirl"></div></div>
+<main>
+
+<header class="site-header">
+  <a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">🌻</span>Our Little Ulagam</a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="#home" aria-current="page">Home</a>
+    <a href="#story">Our Story</a>
+    <a href="#memories">Memories</a>
+    <a href="#photobooth">Photobooth</a>
+    <a href="#letterSection">Letter</a>
+    <a class="nav-heart" href="#letterSection" aria-label="Go to your birthday letter">♥</a>
+  </nav>
+</header>
+<section class="hero-art" id="home" aria-labelledby="home-title">
+  <div class="hero-copy">
+    <div class="kicker">Made For Myy SweetHeart</div>
+    <h1 id="home-title">Where myy<br><em>Sunflowers Bloom</em></h1>
+    <p class="intro">Just like the sunflowers, you bring light, warmth and happiness into my world.</p>
+    <a class="cta-link" href="#story">Enter Our Universe <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="garden-flowers" id="gardenFlowers" aria-hidden="true"></div>
+  <a class="scroll-cue" href="#explore">Scroll to explore Our Ulagam</a>
+</section>
+<div id="content">
+<section class="section explore-section" id="explore" aria-label="Explore the universe">
+  <div class="feature-grid">
+    <a class="feature-card reveal" href="#story"><span class="feature-icon" aria-hidden="true">✦</span><strong>Our Story</strong><span>How it all began.</span></a>
+    <a class="feature-card reveal" href="#memories"><span class="feature-icon" aria-hidden="true">♡</span><strong>Memories</strong><span>Moments that matter.</span></a>
+    <a class="feature-card reveal" href="#photobooth"><span class="feature-icon" aria-hidden="true">▣</span><strong>Our Photobooth</strong><span>Little moments, forever memories.</span></a>
+    <a class="feature-card reveal" href="#letterSection"><span class="feature-icon" aria-hidden="true">✉</span><strong>A Letter</strong><span>From my heart to yours.</span></a>
+  </div>
+</section>
+<section class="section" id="story">
+  <div class="head"><div class="eyebrow">Chapter One · Our Beautiful Moments</div><h2>A story We <em>Created</em></h2><p class="lead">“I made this little space to hold our memories, so that even years from now, we can come back here and feel every moment all over again.” 🌻</p></div>
+  <article class="story-card"><small>The First Hello</small><h3>A small moment, a new world</h3><p>You slid into my DMs asking for Physics readings, and little did I know, You become my favourite person. 😂❤️ One random Instagram message, countless conversations later, You made my heart forget all the laws of Physics. Now, You not just my favourite chapter, YOu the one I want in my forever. 🌻💗</p></article>
+  <article class="story-card"><small>The Growing Season</small><h3>Little things became important</h3><p>We started as classmates, but slowly, you became so much more than that. From random conversations to our 24-hour hackathon, shared food, little memories, and moments that brought us closer, my feelings grew without me even realizing it. Through the difficult days and the happiest ones, you became my comfort, my lucky charm, and my sunflower. And when I finally confessed and you said yes, I knew this was only the beginning of something beautiful. Maybe this was our growing season… and I hope we keep blooming together, forever. 🌻❤️</p></article>
+  <article class="story-card"><small>Still unfolding</small><h3>More chapters to Come</h3><p>This isn't the end of the story. What started as a beautiful little story has become my biggest dream — to marry you and spend the rest of my life loving you. ❤️ No matter how hard life gets, I want to choose you, stand by you, and build our future together. I'm ready to make sacrifices, face every storm, and do whatever it takes to protect the love we share. I want to love you not just today, but until my last breath, and in every tomorrow we dream of. And one day, when we finally get married, I want our love to be so pure, so strong, and so beautiful that everyone looks at us and wishes they had a love like ours. Namma apdi love pannanum — even after years of marriage, we'd still be falling for each other like it's day one. This isn't just a love story I want to live today; it's the forever I want to build with you. You, me, and a lifetime of blooming together. 🌻💍❤️</p></article>
+</section>
+<section class="section" id="memories">
+  <div class="head"><div class="eyebrow">Chapter Two · Little Moments</div><h2>Azhagiya Photos & <em>Memories.</em></h2><p class="lead">These are our kutti moments, with a lifetime of memories yet to come. 💍❤️</p></div>
+  <div class="gallery">
+    <div class="polaroid" style="--tilt:-4deg;--delay:0s"><div class="photo photo-full"><img src="images/first-meet.jpeg" alt="Our First Meet Together"></div><div class="caption">Our First Meet Together</div></div>
+    <div class="polaroid" style="--tilt:3deg;--delay:-1.6s"><div class="photo" style="padding:0"><img src="images/getting-close.jpeg" alt="Getting Close to Each Other"></div><div class="caption">Getting Close to Each Other</div></div>
+    <div class="polaroid" style="--tilt:-2deg;--delay:-2.3s"><div class="photo photo-heart"><img src="images/internship-heart.png" alt="Our photo in a heart shape"></div><div class="caption">Our Internship Day after we got into relationship</div></div>
+  </div>
+</section>
+<section class="section" id="photobooth">
+  <div class="head"><div class="eyebrow">Chapter Three · Our Photobooth</div><h2>Our <em>Photobooth</em></h2><p class="lead">Kutti Moments, Forever Memories.</p></div>
+  <div class="photobooth-gallery">
+    <button class="photobooth-frame" type="button" aria-label="Open photo: First NPTEL Moments">
+      <span class="photobooth-paper" style="--tilt:-4deg;--delay:-.4s">
+      <span class="photobooth-image"><img src="images/photobooth-01.jpeg" alt="First NPTEL Moments"></span>
+      <span class="caption">First NPTEL Moments</span>
+      </span>
+    </button>
+    <button class="photobooth-frame" type="button" aria-label="Open photo: Internship Times">
+      <span class="photobooth-paper" style="--tilt:3deg;--delay:-2s">
+      <span class="photobooth-image"><img src="images/internship-times.jpeg" alt="Internship Times"></span>
+      <span class="caption">Internship Times</span>
+      </span>
+    </button>
+    <button class="photobooth-frame" type="button" aria-label="Open photo: College Outings">
+      <span class="photobooth-paper" style="--tilt:-2deg;--delay:-1.2s">
+      <span class="photobooth-image"><img src="images/college-outings.jpeg" alt="College Outings"></span>
+      <span class="caption">College Outings</span>
+      </span>
+    </button>
+    <button class="photobooth-frame" type="button" aria-label="Open photo: 24 hr Hackathon">
+      <span class="photobooth-paper" style="--tilt:2deg;--delay:-3s">
+      <span class="photobooth-image"><img src="images/24hr-hackathon.jpeg" alt="24hr Hackathon"></span>
+      <span class="caption">24 hr Hackathon  </span>
+      </span>
+    </button>
+    <button class="photobooth-frame" type="button" aria-label="Open photo: Marina Mall Outing">
+      <span class="photobooth-paper" style="--tilt:2deg;--delay:-3s">
+      <span class="photobooth-image"><img src="images/marina-mall-outing.jpeg" alt="Marina Mall Outing"></span>
+      <span class="caption">Marina Mall Outing</span>
+      </span>
+    </button>
+    <button class="photobooth-frame" type="button" aria-label="Open photo: Movie Date">
+      <span class="photobooth-paper" style="--tilt:2deg;--delay:-3s">
+      <span class="photobooth-image"><img src="images/movie-date.jpeg" alt="Movie Date"></span>
+      <span class="caption">Movie Date</span>
+      </span>
+    </button>
+  </div>
+</section>
+<section class="section" id="letterSection">
+  <div class="head"><div class="eyebrow">Chapter Four · Just for You</div><h2>One last little <em>Letter For YOU</em></h2><p class="lead">Psst… your favourite person has a little something to tell you.” 🤍</p></div>
+  <div class="letter-box"><div class="seal">✿</div><h3>A letter for the birthday girl</h3><p>A little note, wrapped up for You</p><button class="cta" id="letterBtn" onclick="openLetter()">Open your letter&nbsp; ✦</button></div>
+  <article id="letter" class="letter-content"><h3 style="font:500 2rem 'Cormorant Garamond',serif;text-align:center;color:#ffdf8a">Happy Birthday, My Dearest Sunflower. 🌻❤️</h3>
+<p>I hope this next chapter of our journey brings us gentle mornings, endless laughter, beautiful memories, brave new beginnings, and countless little moments that remind us how lucky we are to have each other.</p>
+<p>May we continue to grow together, and find happiness in the simplest things. We don't have to be perfect thangooo we just have to keep choosing each other, understanding each other, and making life a little brighter together.</p>
+<p>This chinna uzhagam is only a small way of saying that today deserves to feel special, because you are special to me thangoooo, and every moment with you makes my world a little more beautiful.</p>
+<p>Happy Birthday, My Dear Chelllaaaaa kuttyyyyyyy. May life always be kind to us, may our love keep growing stronger, and may there always be a little sunshine waiting for us around every corner. Here's to us, our dreams, and all the beautiful chapters yet to come. ❤️</p>
+<p style="text-align:right;color:#ffdf8a;font-family:'Cormorant Garamond',serif;font-style:italic">with love, always ✿</p></article>
+</section>
+<dialog class="lightbox" id="photoLightbox" aria-label="Photo viewer">
+  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close photo">Close ✕</button>
+  <img class="lightbox-image" id="lightboxImage" alt="">
+  <p class="lightbox-caption" id="lightboxCaption"></p>
+</dialog>
+</div>
+</main>
+<script>
+const sky=document.getElementById('sky');
+for(let i=0;i<24;i++){const p=document.createElement('i');p.className='particle';p.style.left=Math.random()*100+'%';p.style.top=(38+Math.random()*62)+'%';p.style.setProperty('--dur',(10+Math.random()*16)+'s');p.style.setProperty('--dx',(Math.random()*90-45)+'px');p.style.animationDelay=(-Math.random()*20)+'s';sky.appendChild(p)}
+const flowerField=document.getElementById('gardenFlowers');
+const flowerLayout=[
+  {left:'-2%',size:'clamp(102px,17vw,205px)',scale:'.84',sway:'5.1s',delay:'-.8s'},
+  {left:'13%',size:'clamp(78px,12vw,150px)',scale:'.63',sway:'4.3s',delay:'-2.1s'},
+  {left:'31%',size:'clamp(62px,9vw,112px)',scale:'.48',sway:'5.7s',delay:'-1.3s'},
+  {left:'65%',size:'clamp(66px,10vw,120px)',scale:'.5',sway:'4.7s',delay:'-3s'},
+  {left:'81%',size:'clamp(84px,13vw,160px)',scale:'.68',sway:'5.4s',delay:'-1.7s'},
+  {left:'91%',size:'clamp(104px,18vw,215px)',scale:'.88',sway:'4.5s',delay:'-.4s'}
+];
+for(const [index,layout] of flowerLayout.entries()){
+  const plant=document.createElement('div');plant.className='garden-flower';plant.style.setProperty('--left',layout.left);plant.style.setProperty('--size',layout.size);plant.style.setProperty('--scale',layout.scale);plant.style.setProperty('--sway',layout.sway);plant.style.setProperty('--delay',layout.delay);
+  const stem=document.createElement('span');stem.className='garden-stem';plant.appendChild(stem);
+  for(const side of ['','leaf-right']){const leaf=document.createElement('span');leaf.className=`garden-leaf ${side}`.trim();plant.appendChild(leaf)}
+  const head=document.createElement('span');head.className='garden-head';head.style.setProperty('--sway',layout.sway);head.style.setProperty('--delay',layout.delay);
+  for(let petal=0;petal<16;petal++){const blade=document.createElement('span');blade.className='garden-petal';blade.style.setProperty('--angle',`${petal*22.5}deg`);blade.style.setProperty('--delay',`${(petal%4)*-.24-index*.13}s`);head.appendChild(blade)}
+  const disk=document.createElement('span');disk.className='garden-disk';head.appendChild(disk);plant.appendChild(head);flowerField.appendChild(plant)
+}
+for(let i=0;i<9;i++){const petal=document.createElement('span');petal.className='falling-petal';petal.style.left=`${Math.random()*100}%`;petal.style.scale=`${.7+Math.random()*.8}`;petal.style.setProperty('--fall',`${13+Math.random()*13}s`);petal.style.setProperty('--sway-x',`${-70+Math.random()*140}px`);petal.style.animationDelay=`${-Math.random()*24}s`;document.body.appendChild(petal)}
+function openLetter(){const letter=document.getElementById('letter');letter.classList.toggle('open');const opened=letter.classList.contains('open');document.getElementById('letterBtn').textContent=opened?'Close letter ✦':'Open your letter ✦';if(opened)setTimeout(()=>letter.scrollIntoView({behavior:'smooth',block:'center'}),120)}
+const photoLightbox=document.getElementById('photoLightbox');
+const lightboxImage=document.getElementById('lightboxImage');
+const lightboxCaption=document.getElementById('lightboxCaption');
+document.querySelectorAll('.photobooth-frame').forEach(frame=>frame.addEventListener('click',()=>{
+  const image=frame.querySelector('img');
+  lightboxImage.src=image.src;
+  lightboxImage.alt=image.alt;
+  lightboxCaption.textContent=frame.querySelector('.caption').textContent;
+  photoLightbox.showModal();
+}));
+document.getElementById('lightboxClose').addEventListener('click',()=>photoLightbox.close());
+photoLightbox.addEventListener('click',event=>{if(event.target===photoLightbox)photoLightbox.close()});
+const reveals=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}},{threshold:.16});reveals.forEach(item=>observer.observe(item))}else{reveals.forEach(item=>item.classList.add('is-visible'))}
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.falling-petal').forEach(petal=>petal.remove());document.querySelectorAll('#sky .particle').forEach(particle=>particle.remove())}
+
+</script>
+</body>
+</html>
